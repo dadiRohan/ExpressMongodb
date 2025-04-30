@@ -3,6 +3,8 @@ import cors from "cors";
 import "./loadEnvironment.mjs";
 import "express-async-errors";
 import posts from "./routes/posts.mjs";
+import profile from "./routes/profile.mjs";
+import comments from "./routes/comments.mjs";
 
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -12,6 +14,12 @@ app.use(express.json());
 
 // Load the /posts routes
 app.use("/posts", posts);
+
+// Load the /profile routes
+app.use("/profile", profile);
+
+// Load the /comments routes
+app.use("/comments", comments);
 
 // Global error handling
 app.use((err, _req, res, next) => {
